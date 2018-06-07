@@ -2,16 +2,18 @@ package ru.solodkov.javacore;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 class Phonebook {
-    HashMap<String, HashSet<String>> hm;
+    private Map<String, Set<String>> hm;
 
     Phonebook() {
         this.hm = new HashMap<>();
     }
 
     void addContact(String name, String phone) {
-        HashSet<String> hs = hm.getOrDefault(name, new HashSet<>());
+        Set<String> hs = hm.getOrDefault(name, new HashSet<>());
         hs.add(phone);
         hm.put(name, hs);
     }
