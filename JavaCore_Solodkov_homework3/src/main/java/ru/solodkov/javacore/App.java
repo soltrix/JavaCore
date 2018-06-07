@@ -1,12 +1,9 @@
 package ru.solodkov.javacore;
 
 import java.util.HashMap;
+import java.util.Map;
 
-/**
- * Hello world!
- *
- */
-public class App 
+public class App
 {
     public static void main( String[] args )
     {
@@ -22,7 +19,7 @@ public class App
     // Посчитать, сколько раз встречается каждое слово.
     private static void repeat() {
         String[] arr = {"аквариум", "аккомпанемент", "аккумулятор", "вагон", "валенки", "варежки", "жаворонок", "жалоба", "жёлтый", "лаборатория", "ладонь", "обаяние", "обезьяна", "аккомпанемент", "лаборатория", "варежки"};
-        HashMap<String, Integer> hm = new HashMap<>();
+        Map<String, Integer> hm = new HashMap<>();
         for(String i: arr) {
             hm.put(i, hm.getOrDefault(i,0) + 1);
         }
@@ -36,19 +33,19 @@ public class App
     // тогда при запросе такой фамилии должны выводиться все телефоны.
     private static void phonebook() {
         Phonebook phonebook = new Phonebook();
-        phonebook.add("Иванов", "89203215648");
-        phonebook.add("Смирнов", "89106853424");
-        phonebook.add("Кузнецов", "89993545453");
-        phonebook.add("Смирнов", "89035468546");
-        phonebook.add("Кузнецов", "89066543865");
-        phonebook.add("Петров", "89155436354");
-        phonebook.add("Смирнов", "89058867434");
-        phonebook.add("Попов", "89029687868");
+        phonebook.addContact("Иванов", "89203215648");
+        phonebook.addContact("Смирнов", "89106853424");
+        phonebook.addContact("Кузнецов", "89993545453");
+        phonebook.addContact("Смирнов", "89035468546");
+        phonebook.addContact("Кузнецов", "89066543865");
+        phonebook.addContact("Петров", "89155436354");
+        phonebook.addContact("Смирнов", "89058867434");
+        phonebook.addContact("Попов", "89029687868");
 
-        phonebook.get("Иванов");
-        phonebook.get("Смирнов");
-        phonebook.get("Кузнецов");
-        phonebook.get("Попов");
-        phonebook.get("Васильев");
+        phonebook.getContact("Иванов");
+        phonebook.getContact("Смирнов");
+        phonebook.getContact("Кузнецов");
+        phonebook.getContact("Попов");
+        phonebook.getContact("Васильев");
     }
 }
