@@ -1,4 +1,4 @@
-package ru.solodkov.javacore;
+package ru.solodkov.javacore.client;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,16 +6,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 
-public class App
-{
-    public static void main( String[] args )
-    {
-        new ChatWindow();
-    }
-}
+public class ChatWindow extends JFrame {
+    static final JTextArea jta = new JTextArea();
+    static final JTextField jtf = new JTextField();
 
-class ChatWindow extends JFrame {
     ChatWindow() {
         setTitle("Chat");
         setBounds(400,400,400,400);
@@ -36,11 +32,8 @@ class ChatWindow extends JFrame {
 
         JButton jButton = new JButton("Send");
 
-        final JTextArea jta = new JTextArea();
         JScrollPane jsp = new JScrollPane(jta);
         centerPanel.add(jsp, BorderLayout.CENTER);
-
-        final JTextField jtf = new JTextField();
 
         bottomPanel.add(jtf);
         bottomPanel.add(jButton);
@@ -51,9 +44,16 @@ class ChatWindow extends JFrame {
         jButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                jta.append(jtf.getText() + "\n");
-                jtf.setText("");
-                jtf.grabFocus();
+                try {
+                    Client.out.writeUTF(jtf.getText());
+                    jtf.setText("");
+                    jtf.requestFocus();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+//                jta.append(jtf.getText() + "\n");
+//                jtf.setText("");
+//                jtf.grabFocus();
             }
         });
 
